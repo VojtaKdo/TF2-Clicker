@@ -1,2 +1,2 @@
 # TF2-Clicker
-Spustit[]
+Spustit[https://vojtakdo.github.io/TF2-Clicker/]
