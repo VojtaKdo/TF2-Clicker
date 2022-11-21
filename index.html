@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./res/css/spawn.css" />
+  </head>
+  <body>
+    <!--Start-->
+    <button id="Start">Play</button>
+
+    <!--Spawn-->
+    <img id="spySpawn" src="./res/img/spy.png" alt="spy" />
+    <button id="shop">Shop</button>
+    <button id="battle">Battlefield</button>
+
+    <!--Characters - Battlefield-->
+    <div id="characters">
+      <div id="SpyBattle">
+        <div id="hpCounterSpy">125/125 HP</div>
+        <img id="spy" src="./res/img/red_spy.png" alt="spy" />
+        <img id="SpyShoot" src="./res/img/red_spy_shoot.png" />
+        <audio id="RevolverSFX">
+            <source src="./res/music/revolver_shoot.wav" type="audio/wav"/>
+          </audio>
+      </div>
+
+     
+
+      <div id="Enemy">
+        <div id="hpCounterEnemy">300/300 HP</div>
+        <img src="./res/img/heavy.png" alt="enemy" />
+        <audio id="DeathSFX">
+            <source src="./res/music/Heavy death.mp3" type="audio/mp3">
+        </audio>
+        <audio id="ShotgunSFX">
+            <source src="./res/music/shotgun_shoot.wav" type="audio/wav"/>
+        </audio>
+      </div>
+
+      <!--Shoot animation-->
+    </div>
+
+    <!--Money-->
+    <div id="moneyCounter">Money: 0</div>
+
+    <!--Back Button-->
+    <button id="back">Back</button>
+
+    <!--Shoot Button-->
+    <img src="./res/img/shoot.png" alt="shoot button" id="shoot" />
+
+    <!--Music Spawn-->
+    <img id="musicSpawn" src="./res/img/sound.png" alt="sound" />
+    <img id="muteSpawn" src="./res/img/muted.png" alt="mute" />
+
+    <audio id="songSpawn" loop>
+      <source src="./res/music/Soldier of dance.mp3" type="audio/mp3" />
+    </audio>
+
+    <!--Music Battlefield-->
+    <audio id="songBattle" loop>
+      <source src="./res/music/Team Fortress 2.mp3" type="audio/mp3" />
+    </audio>
+
+    <script src="./res/js/spawn.js"></script>
+  </body>
+</html>
