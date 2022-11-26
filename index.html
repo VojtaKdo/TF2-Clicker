@@ -13,41 +13,34 @@
 
     <!--Spawn-->
     <img id="spySpawn" src="./res/img/spy.png" alt="spy" />
-    <button id="shop">Shop</button>
-    <button id="battle">Battlefield</button>
+    <button id="shop">Shop →</button>
+    <button id="battle">← Battlefield</button>
 
     <!--Characters - Battlefield-->
     <div id="characters">
       <div id="SpyBattle">
-        <div id="hpCounterSpy">125/125 HP</div>
+        <p id="hpCounterSpy">125/125 HP</p>
         <img id="spy" src="./res/img/red_spy.png" alt="spy" />
         <img id="SpyShoot" src="./res/img/red_spy_shoot.png" />
         <audio id="RevolverSFX">
-            <source src="./res/music/revolver_shoot.wav" type="audio/wav"/>
-          </audio>
+          <source src="./res/music/revolver_shoot.wav" type="audio/wav" />
+        </audio>
       </div>
 
-     
-
       <div id="Enemy">
-        <div id="hpCounterEnemy">300/300 HP</div>
+        <p id="hpCounterEnemy">300/300 HP</p>
         <img src="./res/img/heavy.png" alt="enemy" />
         <audio id="DeathSFX">
-            <source src="./res/music/Heavy death.mp3" type="audio/mp3">
+          <source src="./res/music/Heavy death.mp3" type="audio/mp3" />
         </audio>
         <audio id="ShotgunSFX">
-            <source src="./res/music/shotgun_shoot.wav" type="audio/wav"/>
+          <source src="./res/music/shotgun_shoot.wav" type="audio/wav" />
         </audio>
       </div>
 
       <!--Shoot animation-->
     </div>
 
-    <!--Money-->
-    <div id="moneyCounter">Money: 0</div>
-
-    <!--Back Button-->
-    <button id="back">Back</button>
 
     <!--Shoot Button-->
     <img src="./res/img/shoot.png" alt="shoot button" id="shoot" />
@@ -64,6 +57,40 @@
     <audio id="songBattle" loop>
       <source src="./res/music/Team Fortress 2.mp3" type="audio/mp3" />
     </audio>
+
+
+    <!--Shop-->
+    <button id="backShop">← Back</button>
+
+    <!--Music Shop-->
+    <audio id="songShop" loop>
+      <source src="./res/music/More Gun.mp3" type="audio/mp3">
+    </audio>
+
+    <!--Upgrade button-->
+    <button id="upgrade">Upgrade 🛠️</button>
+
+     <!--Money-->
+     <div id="moneyCounter">💰 Money: 0</div>
+
+     <!--Spy-->
+    <img id="spyMoney" src="./res/img/red_spy_money.png" alt="Spy with money">
+
+    <!--Back button a Upgrade List-->
+    <img id="upgradeList" src="./res/img/upgrades.png" alt="upgrades">
+    <button id="backUpgrade">Back</button>
+
+    <!--Damage Upgrade-->
+    <button id="damageUpgrade">+</button>
+    <p id="damageCounter">Damage: 25</p>
+
+    <!--Health Upgrade-->
+    <button id="hpUpgrade">+</button>
+    <p id="hpCounter">Health: 125</p>
+
+    <!--Health on kill Upgrade-->
+    <button id="hokUpgrade">+</button>
+    <p id="hokCounter">Health on kill: 0</p>
 
     <script src="./res/js/spawn.js"></script>
   </body>
