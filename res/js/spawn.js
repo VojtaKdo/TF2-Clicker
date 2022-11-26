@@ -168,11 +168,15 @@ musicSpawn.onclick = () => {
     songSpawn.pause();
     songSpawn.currentTime = 0;
   }
-  if (Enemy.style.display == "none") {
+  if (Enemy.style.display == "block") {
     songBattle.pause();
     songBattle.currentTime = 0;
   }
   if (backShop.style.display == "block") {
+    songShop.pause();
+    songShop.currentTime = 0;
+  }
+  if(upgradeList.style.display == "block"){
     songShop.pause();
     songShop.currentTime = 0;
   }
@@ -188,6 +192,9 @@ muteSpawn.onclick = () => {
     songBattle.play();
   }
   if (backShop.style.display == "block") {
+    songShop.play();
+  }
+  if(upgradeList.style.display == "block"){
     songShop.play();
   }
 };
