@@ -4,6 +4,8 @@ const Start = document.getElementById("Start");
 //spawn
 const shop = document.getElementById("shop");
 const battle = document.getElementById("battle");
+const debug = document.getElementById("debug");
+const killCounter = document.getElementById("killCounter");
 const spySpawn = document.getElementById("spySpawn");
 const obalSpawn = document.getElementById("obalSpawn");
 const musicSpawn = document.getElementById("musicSpawn");
@@ -15,17 +17,24 @@ const muteSpawn = document.getElementById("muteSpawn");
 //tlačítka
 const back = document.getElementById("back");
 const shoot = document.getElementById("shoot");
-const hpCounterSpy = document.getElementById("hpCounterSpy");
+const cancelShoot = document.getElementById("cancelShoot");
 const songBattle = document.getElementById("songBattle");
 
 //counters
 const hpCounterEnemy = document.getElementById("hpCounterEnemy");
+const hpCounterSpy = document.getElementById("hpCounterSpy");
+const hpCounterBoss1 = document.getElementById("hpCounterBoss1")
 const moneyCounter = document.getElementById("moneyCounter");
 
 //characters
 const Enemy = document.getElementById("Enemy");
+const heavy = document.getElementById("heavy");
+const heavyDead = document.getElementById("heavyDead");
 const DeathSFX = document.getElementById("DeathSFX");
 const ShotgunSFX = document.getElementById("ShotgunSFX");
+
+const Boss1 = document.getElementById("Boss1");
+const bossImage = document.getElementById("bossImage");
 
 const spy = document.getElementById("spy");
 const SpyShoot = document.getElementById("SpyShoot");
@@ -59,11 +68,16 @@ const hokCounter = document.getElementById("hokCounter");
 let hpSpy = 125;
 let hpMaxSpy = 125;
 let hpEnemy = 300;
+let hpMaxEnemy = 300;
+let kill = 0;
+let hpBoss1 = 1000;
 
 //damage
-let damageSpy = 25;
-let damageHeavy = 25;
+let damageSpy = 20;
 let hok = 0;
+let heavyDeath = 0;
+let enemyDamage;
+let enemyNotDamage;
 
 //money
 let money = 0;
@@ -144,6 +158,38 @@ hokUpgrade.onmouseleave = () => {
   changeColor(hokUpgrade, "white");
 };
 
+function enemyAttack(){
+  enemyDamage = setInterval(() => {
+    if (Enemy.style.display == "block") {
+      let damageHeavy = Math.random() * 60;
+      damageHeavy = parseInt(damageHeavy);
+      console.log(damageHeavy);
+      hpSpy -= damageHeavy;
+      hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+      ShotgunSFX.play();
+      ShotgunSFX.volume = 0.04;
+      ShotgunSFX.currentTime = 0;
+    }
+  }, 1300);
+}
+
+function enemyNotAttack(){
+  enemyNotDamage = setTimeout(() => {
+    if (hpEnemy <= 0) {
+      enemyAttack();
+      hpEnemy += 300;
+      money += 50;
+      heavyDeath += 1;
+      console.log(heavyDeath);
+      moneyCounter.innerHTML = `💰 Money: ${money}`;
+      shoot.style.pointerEvents = "all";
+      cancelShoot.style.display = "none";
+      shoot.style.display = "block";
+      heavy.style.transform = "rotate(0deg)";
+    }
+  }, 3000);
+}
+
 Start.onclick = () => {
   songSpawn.play();
   songSpawn.volume = 0.04;
@@ -153,6 +199,8 @@ Start.onclick = () => {
   battle.style.display = "block";
   shop.style.display = "block";
   musicSpawn.style.display = "block";
+  debug.style.display = "block";
+  killCounter.style.display = "block";
 
   document.body.style.background = "url(./res/img/spawn.jpg)";
   document.body.style.backgroundRepeat = "no-repeat";
@@ -176,11 +224,17 @@ musicSpawn.onclick = () => {
     songShop.pause();
     songShop.currentTime = 0;
   }
-  if(upgradeList.style.display == "block"){
+  if (upgradeList.style.display == "block") {
     songShop.pause();
     songShop.currentTime = 0;
   }
 };
+
+debug.onclick = () => {
+  hpSpy -= hpSpy;
+  hpSpy += hpMaxSpy;
+  hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+}
 
 muteSpawn.onclick = () => {
   musicSpawn.style.display = "block";
@@ -194,7 +248,7 @@ muteSpawn.onclick = () => {
   if (backShop.style.display == "block") {
     songShop.play();
   }
-  if(upgradeList.style.display == "block"){
+  if (upgradeList.style.display == "block") {
     songShop.play();
   }
 };
@@ -203,6 +257,8 @@ muteSpawn.onclick = () => {
 shop.onclick = () => {
   spySpawn.style.display = "none";
   shop.style.display = "none";
+  debug.style.display = "none";
+  killCounter.style.display = "none";
   battle.style.display = "none";
   upgrade.style.display = "block";
   spyMoney.style.display = "block";
@@ -284,6 +340,8 @@ backShop.onclick = () => {
   spySpawn.style.display = "block";
   shop.style.display = "block";
   battle.style.display = "block";
+  debug.style.display = "block";
+  killCounter.style.display = "block";
   upgrade.style.display = "none";
   spyMoney.style.display = "none";
   moneyCounter.style.display = "none";
@@ -302,10 +360,24 @@ backShop.onclick = () => {
 };
 
 battle.onclick = () => {
+  if(cancelShoot.style.display == "block"){
+    cancelShoot.style.pointerEvents = "none";
+    shoot.style.pointerEvents = "none";
+  }
+
+  if(cancelShoot.style.display == "none"){
+    shoot.style.pointerEvents = "all";
+    }
+
   if (battle.innerHTML != "Back →") {
+    enemyAttack();
+    heavy.style.transform = "rotate(0deg)";
+    
     //Spawn
     spySpawn.style.display = "none";
     shop.style.display = "none";
+    debug.style.display = "none";
+    killCounter.style.display = "none";
     //battlefield
     document.body.style.background = "url(./res/img/2fort.png)";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -329,12 +401,17 @@ battle.onclick = () => {
     battle.innerHTML = "Back →";
     battle.style.float = "right";
     battle.style.marginTop = "-300px";
+    battle.style.maxWidth = "150px";
   } 
   
   else if (battle.innerHTML != "← Battlefield") {
+    clearInterval(enemyDamage);
+    clearInterval(enemyNotDamage);
     spySpawn.style.display = "block";
     SpyShoot.style.display = "none";
     shop.style.display = "block";
+    debug.style.display = "block";
+    killCounter.style.display = "block";
     document.body.style.background = "url(./res/img/spawn.jpg)";
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundPosition = "center center";
@@ -345,6 +422,7 @@ battle.onclick = () => {
     spy.style.display = "none";
     characters.style.display = "none";
     shoot.style.display = "none";
+    cancelShoot.style.display = "none";
 
     hpSpy -= hpSpy;
     hpSpy += hpMaxSpy;
@@ -357,6 +435,8 @@ battle.onclick = () => {
     //muzika
     songSpawn.play();
     songBattle.pause();
+    DeathSFX.pause();
+    DeathSFX.currentTime = 0;
     musicSpawn.style.display = "block";
     muteSpawn.style.display = "none";
     songSpawn.currentTime = 0;
@@ -364,6 +444,7 @@ battle.onclick = () => {
     battle.innerHTML = "← Battlefield";
     battle.style.float = "left";
     battle.style.margin = "0";
+    battle.style.maxWidth = "250px";
   }
 };
 
@@ -371,20 +452,30 @@ battle.onclick = () => {
 shoot.onclick = () => {
   hpEnemy -= damageSpy;
   hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
-  setTimeout(() => {
-    if (hpEnemy <= 0) {
-      hpEnemy += 300;
-      money += 50;
-      moneyCounter.innerHTML = `💰 Money: ${money}`;
-      DeathSFX.play();
-      DeathSFX.volume = 0.2;
-      DeathSFX.currentTime = 0;
+  enemyNotAttack();
+
+  setTimeout(() =>{
+    if(hpEnemy <= 0){
+    clearInterval(enemyDamage);
+    heavy.style.transform = "rotate(90deg)";
+    DeathSFX.play();
+    DeathSFX.volume = 0.2;
+    DeathSFX.currentTime = 0;
+    cancelShoot.style.display = "block";
+    shoot.style.display = "none";
+    cancelShoot.style.pointerEvents = "none";
+    kill++;
+    killCounter.innerHTML = `Kill counter: ${kill}`;
     }
-  }, 1);
+  }, 0.1)
 
   if (hpEnemy <= 0 || hokCounter > 0) {
     hpSpy += hok;
     hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+  }
+
+  if(hpSpy >= hpMaxSpy){
+    hpSpy = hpMaxSpy;
   }
 
   spy.style.display = "none";
@@ -400,21 +491,14 @@ shoot.onclick = () => {
 };
 
 window.onload = () => {
-  const enemyDamage = setInterval(() => {
-    if (Enemy.style.display == "block") {
-      hpSpy -= damageHeavy;
-      hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
-      ShotgunSFX.play();
-      ShotgunSFX.volume = 0.04;
-      ShotgunSFX.currentTime = 0;
-    }
-  }, 2000);
-
   setInterval(() => {
     if (hpSpy <= 0) {
+      clearInterval(enemyDamage);
       spySpawn.style.display = "block";
       shop.style.display = "block";
       battle.style.display = "block";
+      debug.style.display = "block";
+      killCounter.style.display = "block";
       document.body.style.background = "url(./res/img/spawn.jpg)";
       document.body.style.backgroundRepeat = "no-repeat";
       document.body.style.backgroundPosition = "center center";
@@ -426,6 +510,8 @@ window.onload = () => {
       characters.style.display = "none";
       shoot.style.display = "none";
       moneyCounter.style.display = "none";
+      muteSpawn.style.display = "none";
+      musicSpawn.style.display = "block";
       songBattle.pause();
       songSpawn.play();
       songSpawn.currentTime = 0;
@@ -435,12 +521,15 @@ window.onload = () => {
       hpEnemy -= hpEnemy;
       hpEnemy += 300;
       hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
+      kill--;
+      killCounter.innerHTML = `Kill counter: ${kill}`;
 
       battle.innerHTML = "← Battlefield";
       battle.style.float = "left";
       battle.style.margin = "0";
+      battle.style.maxWidth = "250px";
     }
-  }, 1);
+  }, 10);
 };
 
 // útočení nepřítele

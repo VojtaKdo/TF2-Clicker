@@ -1,321 +1,373 @@
 /*Pro všechny*/
-@font-face{
-    font-family: TF2;
-    src: url(../fonts/TF2font.ttf);
+@font-face {
+  font-family: TF2;
+  src: url(../fonts/TF2font.ttf);
 }
 
-*{
-    box-sizing: border-box;
-    user-select: none;
-    user-zoom: none;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  user-select: none;
+  user-zoom: none;
+  margin: 0;
 }
 
-body{
-    background-image: url(../img/TF2.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+body {
+  background-image: url(../img/TF2.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-button{
-    border: 3px solid black;
-    max-width: 150px;
-    width: 100%;
-    padding: 10px;
-    font-size: 20pt;
-    background-color: red;
-    text-decoration: none;
+button {
+  border: 3px solid black;
+  max-width: 150px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20pt;
+  background-color: red;
+  text-decoration: none;
+  font-family: TF2;
 }
 
 /*Start*/
-#Start{
-    border: 3px solid black;
-    max-width: 200px;
-    width: 100%;
-    padding: 10px;
-    font-size: 30pt;
-    background-color: red;
-    cursor: pointer;
-    text-align: center;
-    left: 50%;
-    right: 50%;
-    top: 20%;
-    position: fixed;
-    margin-left: -100px;
-    margin-right: -100px;
+#Start {
+  border: 3px solid black;
+  max-width: 200px;
+  width: 100%;
+  padding: 10px;
+  font-size: 30pt;
+  background-color: red;
+  cursor: pointer;
+  text-align: center;
+  left: 50%;
+  right: 50%;
+  top: 20%;
+  position: fixed;
+  margin-left: -100px;
+  margin-right: -100px;
 }
 
 /*Spawn*/
-#spySpawn{
-    max-width: 250px;
-    max-height: 635px;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 50%;
-    right: 50%;
-    margin-left: -125px;
-    margin-right: -125px;
-    margin-top: 100px;
-    display: none;
-    pointer-events: none;
+#spySpawn {
+  max-width: 250px;
+  max-height: 635px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  margin-left: -125px;
+  margin-right: -125px;
+  margin-top: 100px;
+  display: none;
+  pointer-events: none;
 }
 
-#shop{
- float: right;
- display: none;
- cursor: pointer;
+#shop {
+  float: right;
+  display: none;
+  cursor: pointer;
 }
 
-#battle{
-    float: left;
-    display: none;
-    max-width: 200px;
-    cursor: pointer;
+#battle {
+  float: left;
+  display: none;
+  max-width: 250px;
+  cursor: pointer;
 }
 
-#musicSpawn{
-    max-width: 50px;
-    max-height: 50px;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    margin: 0 auto;
-    display: block;
-    bottom: 0px;
-    display: none;
+#killCounter {
+  font-size: 25pt;
+  top: 80px;
+  position: fixed;
+  display: none;
+  font-family: TF2;
+  color: white;
 }
 
-#muteSpawn{
-    max-width: 50px;
-    max-height: 50px;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    margin: 0 auto;
-    display: none;
-    bottom: 0px;
+#debug {
+  max-width: 250px;
+  background-color: rgb(61, 75, 55);
+  background: linear-gradient(
+    90deg,
+    rgba(61, 75, 55, 1) 0%,
+    rgba(0, 255, 38, 1) 50%,
+    rgba(61, 75, 55, 1) 100%
+  );
+  display: none;
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  margin-left: -125px;
+  margin-right: -125px;
+  cursor: pointer;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+#debug:hover {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 255, 38, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
+#musicSpawn,
+#muteSpawn {
+  max-width: 50px;
+  max-height: 50px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  margin: 0 auto;
+  display: block;
+  bottom: 0px;
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /*battlefield*/
-#Enemy{
-    max-height: 499px;
-    height: 100%;
-    font-size: 20pt;
-    text-align: center;
-    pointer-events: none;
-    display: none;
+#Enemy {
+  max-height: 499px;
+  height: 100%;
+  font-size: 20pt;
+  text-align: center;
+  pointer-events: none;
+  display: none;
+  display: flex;
+  margin: 0 auto;
 }
 
-#spy{
-    max-height: 508px;
-    height: 100%;
-    pointer-events: none;
-    display: none;
+#heavy {
+  transition: 0.2s;
 }
 
-#hpCounterSpy{
-    font-size: 20pt;
-    text-align: center;
+#spy {
+  max-height: 508px;
+  height: 100%;
+  pointer-events: none;
+  display: none;
 }
 
-#SpyShoot{
-    max-height: 508px;
-    height: 100%;
-    font-size: 20pt;
-    text-align: center;
-    pointer-events: none;
-    display: none;
+#Boss1 {
+  text-align: center;
+  margin: 0 auto;
+  display: none;
+  margin-top: -180px;
 }
 
-#characters{
-    display: flex;
-    margin: 0 auto;
-    display: none;
-    margin-top: 300px;
-    margin-left: 35%;
+#bossImage {
+  max-width: 287.5px;
+  max-height: 672px;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
 }
 
-
-a{
-    text-decoration: none;
-    color: inherit;
-    display: none;
+#hpCounterSpy,
+#hpCounterEnemy,
+#hpCounterBoss1 {
+  font-size: 20pt;
+  text-align: center;
+  border: 3px solid black;
+  background-color: greenyellow;
+  padding: 10px;
+  font-family: TF2;
 }
 
-#back{
-position: absolute;
-top: 0px;
-right: 0px;
-text-decoration:none;
-text-align:center;
-float: right;
-max-width: 150px;
-width: 100%;
-padding: 10px;
-font-size: 20pt;
-text-decoration: none;
-display: none;
-cursor: pointer;
+#SpyShoot {
+  max-height: 508px;
+  height: 100%;
+  font-size: 20pt;
+  text-align: center;
+  pointer-events: none;
+  display: none;
 }
 
-#shoot{
-    position: absolute;
-    left: 0px;
-    top: 10px;
-    max-width: 225.5px;
-    width: 100%;
-    max-height: 172.5px;
-    height: 100%;
-    cursor: pointer;
-    display: none;
+#characters {
+  display: flex;
+  margin: 0 auto;
+  display: none;
+  margin-top: 300px;
+  margin-left: 23%;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  display: none;
+}
+
+#back {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-decoration: none;
+  text-align: center;
+  float: right;
+  max-width: 150px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20pt;
+  text-decoration: none;
+  display: none;
+  cursor: pointer;
+}
+
+#shoot,
+#cancelShoot {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  max-width: 225.5px;
+  width: 100%;
+  max-height: 172.5px;
+  height: 100%;
+  cursor: pointer;
+  display: none;
+}
 
 /*Shop*/
 
 /*Tlačítka*/
-#backShop{
-    display: none;
-    float: left;
-    cursor: pointer;
+#backShop {
+  display: none;
+  float: left;
+  cursor: pointer;
 }
 
-#upgrade{
-    display: none;
-    cursor: pointer;
-    position: absolute;
-    left: 58%;
-    top: 51%;
-    background-color: yellow;
-    max-width: 200px;
+#upgrade {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  left: 58%;
+  top: 51%;
+  background-color: yellow;
+  max-width: 200px;
 }
 
-#damageUpgrade{
-    display: none;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 0;
-    width: 35px;
-    position: absolute;
-    left: 43.5%;
-    top: 20%;
-    cursor: pointer;
+#damageUpgrade {
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 0;
+  width: 35px;
+  position: absolute;
+  left: 43.5%;
+  top: 20%;
+  cursor: pointer;
 }
 
-#damageCounter{
-    display: none;
-    font-size: 20pt;
-    color: white;
-    font-family: TF2;
-    position: absolute;
-    top: 40%;
-    left: 40%;
+#damageCounter {
+  display: none;
+  font-size: 20pt;
+  color: white;
+  font-family: TF2;
+  position: absolute;
+  top: 40%;
+  left: 40%;
 }
 
-#hpUpgrade{
-    display: none;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 0;
-    width: 35px;
-    position: absolute;
-    left: 63%;
-    top: 20%;
-    cursor: pointer;
+#hpUpgrade {
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 0;
+  width: 35px;
+  position: absolute;
+  left: 63%;
+  top: 20%;
+  cursor: pointer;
 }
 
-#hpCounter{
-    display: none;
-    font-size: 20pt;
-    color: white;
-    font-family: TF2;
-    position: absolute;
-    top: 45%;
-    left: 40%;
+#hpCounter {
+  display: none;
+  font-size: 20pt;
+  color: white;
+  font-family: TF2;
+  position: absolute;
+  top: 45%;
+  left: 40%;
 }
 
-#hokUpgrade{
-    display: none;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 0;
-    width: 35px;
-    position: absolute;
-    left: 43.5%;
-    top: 31%;
-    cursor: pointer;
+#hokUpgrade {
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 0;
+  width: 35px;
+  position: absolute;
+  left: 43.5%;
+  top: 31%;
+  cursor: pointer;
 }
 
-#hokCounter{
-    display: none;
-    font-size: 20pt;
-    color: white;
-    font-family: TF2;
-    position: absolute;
-    top: 50%;
-    left: 40%;
+#hokCounter {
+  display: none;
+  font-size: 20pt;
+  color: white;
+  font-family: TF2;
+  position: absolute;
+  top: 50%;
+  left: 40%;
 }
 
-#backUpgrade{
-    display: none;
-    position: fixed;
-    width: 100%;
-    left: 70%;
-    top: 55%;
-    cursor: pointer;
+#backUpgrade {
+  display: none;
+  position: fixed;
+  width: 100%;
+  left: 70%;
+  top: 55%;
+  cursor: pointer;
 }
-
 
 /*Vizuály*/
-#upgradeList{
-    display: none;
-    position: fixed;
-    width: 60%;
-    left: 20%;
-    right: 20%;
-    pointer-events: none;
+#upgradeList {
+  display: none;
+  position: fixed;
+  width: 60%;
+  left: 20%;
+  right: 20%;
+  pointer-events: none;
 }
 
-#spyMoney{
-    max-width: 200px;
-    max-height: 443.2px;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 40%;
-    top: 23%;
-    right: 50%;
-    margin-left: -125px;
-    margin-right: -125px;
-    margin-top: 100px;
-    display: none;
-    pointer-events: none;
+#spyMoney {
+  max-width: 200px;
+  max-height: 443.2px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 40%;
+  top: 23%;
+  right: 50%;
+  margin-left: -125px;
+  margin-right: -125px;
+  margin-top: 100px;
+  display: none;
+  pointer-events: none;
 }
 
-#moneyCounter{
-    border: 3px solid black;
-    background-color: gold;
-    font-size: 20pt;
-    max-width: 250px;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    margin-left: 10px;
-    display: none;
-    float: right;
+#moneyCounter {
+  border: 3px solid black;
+  background-color: gold;
+  font-size: 20pt;
+  max-width: 250px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-left: 10px;
+  display: none;
+  float: right;
+  font-family: TF2;
 }
-

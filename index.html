@@ -15,6 +15,8 @@
     <img id="spySpawn" src="./res/img/spy.png" alt="Spy" />
     <button id="shop">Shop →</button>
     <button id="battle">← Battlefield</button>
+    <button id="debug">Debug Health <br><span style="font-size: 10pt">(Click after dying)</span></button>
+    <p id="killCounter">Kill counter: 0</p>
 
     <!--Characters - Battlefield-->
     <div id="characters">
@@ -29,7 +31,7 @@
 
       <div id="Enemy">
         <p id="hpCounterEnemy">300/300 HP</p>
-        <img src="./res/img/heavy.png" alt="enemy" />
+        <img id="heavy" src="./res/img/heavy.png" alt="enemy" />
         <audio id="DeathSFX">
           <source src="./res/music/Heavy death.mp3" type="audio/mp3" />
         </audio>
@@ -44,6 +46,7 @@
 
     <!--Shoot Button-->
     <img src="./res/img/shoot.png" alt="shoot button" id="shoot" />
+    <img src="./res/img/cancel_shoot.png" alt="Cant shoot" id="cancelShoot">
 
     <!--Music Spawn-->
     <img id="musicSpawn" src="./res/img/sound.png" alt="sound" />
