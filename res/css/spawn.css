@@ -131,13 +131,6 @@ button {
   top: 60%;
 }
 
-#Sazka,
-#MineBlock,
-#Yasuo {
-  display: flex;
-  display: inline;
-}
-
 #Yasuo:hover {
   background-color: aqua;
 }
