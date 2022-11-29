@@ -9,3 +9,6 @@
 
 <h2>1.2 Update</h2>
 <p>- Bug fixes</p>
+
+<h2>1.3 Update</h2>
+<p>- Added Sponsors</p>
