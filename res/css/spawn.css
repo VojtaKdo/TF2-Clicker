@@ -48,6 +48,134 @@ button {
   margin-right: -100px;
 }
 
+#Sponsors {
+  border: 3px solid black;
+  max-width: 200px;
+  width: 100%;
+  padding: 10px;
+  font-size: 30pt;
+  background-color: rgb(79, 82, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(79, 82, 255, 1) 0%,
+    rgba(9, 13, 125, 1) 50%,
+    rgba(79, 82, 255, 1) 100%
+  );
+  cursor: pointer;
+  text-align: center;
+  left: 50%;
+  right: 50%;
+  top: 30%;
+  position: fixed;
+  margin-left: -100px;
+  margin-right: -100px;
+}
+
+#Sponsors:hover {
+  background-color: rgb(0, 4, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 4, 255, 1) 0%,
+    rgba(3, 254, 251, 1) 50%,
+    rgba(0, 4, 255, 1) 100%
+  );
+}
+
+#backSponsors {
+  display: none;
+  float: right;
+  cursor: pointer;
+}
+
+#Sazka,
+#MineBlock,
+#Yasuo,
+#Payday,
+#Cat,
+#Roguelike {
+  width: 250px;
+  padding: 20px;
+  display: none;
+  color: black;
+  border: 3px solid black;
+  font-size: 20pt;
+  text-align: center;
+}
+
+#Sazka {
+  background-color: yellow;
+  position: fixed;
+  left: 30%;
+  top: 20%;
+}
+
+#Sazka:hover {
+  background-color: goldenrod;
+}
+
+#MineBlock {
+  background-color: greenyellow;
+  position: fixed;
+  left: 30%;
+  top: 40%;
+}
+
+#MineBlock:hover {
+  background-color: darkgreen;
+}
+
+#Yasuo {
+  background-color: blue;
+  position: fixed;
+  left: 30%;
+  top: 60%;
+}
+
+#Sazka,
+#MineBlock,
+#Yasuo {
+  display: flex;
+  display: inline;
+}
+
+#Yasuo:hover {
+  background-color: aqua;
+}
+
+#Payday {
+  background-color: red;
+  position: fixed;
+  right: 30%;
+  top: 20%;
+
+}
+
+#Payday:hover {
+  background-color: darkred;
+}
+
+#Cat {
+  background-color: orange;
+  position: fixed;
+  right: 30%;
+  top: 40%;
+}
+
+#Cat:hover {
+  background-color: chocolate;
+}
+
+#Roguelike {
+  background-color: brown;
+  position: fixed;
+  right: 30%;
+  top: 60%;
+}
+
+#Roguelike:hover {
+  background-color: firebrick;
+}
+
 /*Spawn*/
 #spySpawn {
   max-width: 250px;

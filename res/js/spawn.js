@@ -1,5 +1,14 @@
 //start
 const Start = document.getElementById("Start");
+const Sponsors = document.getElementById("Sponsors");
+const backSponsors = document.getElementById("backSponsors");
+
+const Sazka = document.getElementById("Sazka");
+const MineBlock = document.getElementById("MineBlock");
+const Yasuo = document.getElementById("Yasuo");
+const Payday = document.getElementById("Payday");
+const Cat = document.getElementById("Cat");
+const Roguelike = document.getElementById("Roguelike");
 
 //spawn
 const shop = document.getElementById("shop");
@@ -158,6 +167,14 @@ hokUpgrade.onmouseleave = () => {
   changeColor(hokUpgrade, "white");
 };
 
+backSponsors.onmouseenter = () => {
+  changeColor(backSponsors, "darkred");
+};
+
+backSponsors.onmouseleave = () => {
+  changeColor(backSponsors, "red");
+};
+
 function enemyAttack(){
   enemyDamage = setInterval(() => {
     if (Enemy.style.display == "block") {
@@ -208,6 +225,42 @@ Start.onclick = () => {
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundAttachment = "fixed";
 };
+
+Sponsors.onclick = () => {
+  Start.style.display = "none";
+  Sponsors.style.display = "none";
+  backSponsors.style.display = "block";
+  Sazka.style.display = "block";
+  Yasuo.style.display = "block";
+  Cat.style.display = "block";
+  Roguelike.style.display = "block";
+  MineBlock.style.display = "block";
+  Payday.style.display = "block";
+
+  document.body.style.background = "url(./res/img/sponsor.jpg)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "center center";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundAttachment = "fixed";
+}
+
+backSponsors.onclick = () => {
+  Start.style.display = "block";
+  Sponsors.style.display = "block";
+  backSponsors.style.display = "none";
+  Sazka.style.display = "none";
+  Yasuo.style.display = "none";
+  Cat.style.display = "none";
+  Roguelike.style.display = "none";
+  MineBlock.style.display = "none";
+  Payday.style.display = "none";
+
+  document.body.style.background = "url(./res/img/TF2.png)";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "center center";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundAttachment = "fixed";
+}
 
 musicSpawn.onclick = () => {
   musicSpawn.style.display = "none";
@@ -403,6 +456,14 @@ battle.onclick = () => {
     battle.style.marginTop = "-300px";
     battle.style.maxWidth = "150px";
   } 
+
+  else if(kill == 0){
+    Enemy.style.display = "none";
+    hpCounterEnemy.style.display = "none";
+    Boss1.style.display = "block";
+    hpCounterBoss1.style.display = "block";
+    hpCounterBoss1.innerHTML = `${hpBoss1}/1000 HP`;
+  }
   
   else if (battle.innerHTML != "← Battlefield") {
     clearInterval(enemyDamage);
