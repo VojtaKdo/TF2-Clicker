@@ -9,105 +9,141 @@
   </head>
   <body>
     <!--Start-->
-    <button id="Start">Play</button>
-    <button id="Sponsors">Other games</button>
-    <button id="backSponsors">Back →</button>
-<a id="Sazka" href="https://latethen.github.io/Sazka-simulator-Free-Win-Edition/">Michal Carska: Sazka simulator</a>
-<a id="MineBlock" href="https://akino02.github.io/MineBlock/">Michal Adámek: MineBlock</a>
-<a id="Yasuo" href="https://misako1.github.io/Fighting/">Michal Kostecký: Yasuo simulator</a>
-<a id="Payday" href="https://mcbeefyvevo.github.io/Payday-Clicker/">Ondřej Štěpánek: Payday Clicker</a>
-<a id="Cat" href="https://oreoncz.github.io/catfighter/">Filip Kučera: CatFight simulator</a>
-<a id="Roguelike" href="#">Coming soon</a>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./res/css/spawn.css" />
+      </head>
+      <body>
+        <!--Start-->
+        <button id="Start">Play</button>
+        <button id="Sponsors">Other games</button>
+        <button id="backSponsors">Back →</button>
+        <a
+          id="Sazka"
+          href="https://latethen.github.io/Sazka-simulator-Free-Win-Edition/"
+          >Michal Carska: Sazka simulator</a
+        >
+        <a id="MineBlock" href="https://akino02.github.io/MineBlock/"
+          >Michal Adámek: MineBlock</a
+        >
+        <a id="Yasuo" href="https://misako1.github.io/Fighting/"
+          >Michal Kostecký: Yasuo simulator</a
+        >
+        <a id="Payday" href="https://mcbeefyvevo.github.io/Payday-Clicker/"
+          >Ondřej Štěpánek: Payday Clicker</a
+        >
+        <a id="Cat" href="https://oreoncz.github.io/catfighter/"
+          >Filip Kučera: CatFight simulator</a
+        >
+        <a id="Roguelike" href="#">Coming soon</a>
 
-    <!--Spawn-->
-    <img id="spySpawn" src="./res/img/spy.png" alt="Spy" />
-    <button id="shop">Shop →</button>
-    <button id="battle">← Battlefield</button>
-    <button id="debug">Debug Health <br><span style="font-size: 10pt">(Click after dying)</span></button>
-    <p id="killCounter">Kill counter: 0</p>
+        <!--Spawn-->
+        <img id="spySpawn" src="./res/img/spy.png" alt="Spy" />
+        <button id="shop">Shop →</button>
+        <button id="battle">← Battlefield</button>
+        <button id="debug">
+          Debug Health <br /><span style="font-size: 10pt"
+            >(Click after dying)</span
+          >
+        </button>
+        <p id="killCounter">Kill counter: 0</p>
 
-    <!--Characters - Battlefield-->
-    <div id="characters">
-      <div id="SpyBattle">
-        <p id="hpCounterSpy">125/125 HP</p>
-        <img id="spy" src="./res/img/red_spy.png" alt="spy" />
-        <img id="SpyShoot" src="./res/img/red_spy_shoot.png" />
-        <audio id="RevolverSFX">
-          <source src="./res/music/revolver_shoot.wav" type="audio/wav" />
+        <!--Characters - Battlefield-->
+        <button id="back">Back →</button>
+        <div id="characters">
+          <div id="SpyBattle">
+            <p id="hpCounterSpy">125/125 HP</p>
+            <img id="spy" src="./res/img/red_spy.png" alt="spy" />
+            <img id="SpyShoot" src="./res/img/red_spy_shoot.png" />
+            <audio id="RevolverSFX">
+              <source src="./res/music/revolver_shoot.wav" type="audio/wav" />
+            </audio>
+          </div>
+
+          <div id="Enemy">
+            <p id="hpCounterEnemy">300/300 HP</p>
+            <img id="heavy" src="./res/img/heavy.png" alt="enemy" />
+            <audio id="DeathSFX">
+              <source src="./res/music/Heavy death.mp3" type="audio/mp3" />
+            </audio>
+            <audio id="ShotgunSFX">
+              <source src="./res/music/shotgun_shoot.wav" type="audio/wav" />
+            </audio>
+          </div>
+
+          <div id="Boss1">
+            <p id="hpCounterBoss1">1000/1000 HP</p>
+            <img id="bossImage" src="./res/img/HHH.png" alt="Boss1" />
+          </div>
+
+          <!--Shoot animation-->
+        </div>
+
+        <!--Shoot Button-->
+        <img src="./res/img/shoot.png" alt="shoot button" id="shoot" />
+        <img
+          src="./res/img/cancel_shoot.png"
+          alt="Cant shoot"
+          id="cancelShoot"
+        />
+
+        <!--Music Spawn-->
+        <img id="musicSpawn" src="./res/img/sound.png" alt="sound" />
+        <img id="muteSpawn" src="./res/img/muted.png" alt="mute" />
+
+        <audio id="songSpawn" loop>
+          <source src="./res/music/Soldier of dance.mp3" type="audio/mp3" />
         </audio>
-      </div>
 
-      <div id="Enemy">
-        <p id="hpCounterEnemy">300/300 HP</p>
-        <img id="heavy" src="./res/img/heavy.png" alt="enemy" />
-        <audio id="DeathSFX">
-          <source src="./res/music/Heavy death.mp3" type="audio/mp3" />
+        <!--Music Battlefield-->
+        <audio id="songBattle" loop>
+          <source src="./res/music/Team Fortress 2.mp3" type="audio/mp3" />
         </audio>
-        <audio id="ShotgunSFX">
-          <source src="./res/music/shotgun_shoot.wav" type="audio/wav" />
+
+        <!--Shop-->
+        <button id="backShop">← Back</button>
+
+        <!--Music Shop-->
+        <audio id="songShop" loop>
+          <source src="./res/music/More Gun.mp3" type="audio/mp3" />
         </audio>
-      </div>
 
-      <div id="Boss1">
-        <p id="hpCounterBoss1">1000/1000 HP</p>
-        <img id="bossImage" src="./res/img/HHH.png" alt="Boss1">
-      </div>
+        <!--Upgrade button-->
+        <button id="upgrade">Upgrade 🛠️</button>
 
-      <!--Shoot animation-->
-    </div>
+        <!--Money-->
+        <div id="moneyCounter">💰 Money: 0</div>
 
+        <!--Spy-->
+        <img
+          id="spyMoney"
+          src="./res/img/red_spy_money.png"
+          alt="Spy with money"
+        />
 
-    <!--Shoot Button-->
-    <img src="./res/img/shoot.png" alt="shoot button" id="shoot" />
-    <img src="./res/img/cancel_shoot.png" alt="Cant shoot" id="cancelShoot">
+        <!--Back button a Upgrade List-->
+        <img id="upgradeList" src="./res/img/upgrades.png" alt="upgrades" />
+        <button id="backUpgrade">Back</button>
 
-    <!--Music Spawn-->
-    <img id="musicSpawn" src="./res/img/sound.png" alt="sound" />
-    <img id="muteSpawn" src="./res/img/muted.png" alt="mute" />
+        <!--Damage Upgrade-->
+        <button id="damageUpgrade">+</button>
+        <p id="damageCounter">Damage: 25</p>
 
-    <audio id="songSpawn" loop>
-      <source src="./res/music/Soldier of dance.mp3" type="audio/mp3" />
-    </audio>
+        <!--Health Upgrade-->
+        <button id="hpUpgrade">+</button>
+        <p id="hpCounter">Health: 125</p>
 
-    <!--Music Battlefield-->
-    <audio id="songBattle" loop>
-      <source src="./res/music/Team Fortress 2.mp3" type="audio/mp3" />
-    </audio>
+        <!--Health on kill Upgrade-->
+        <button id="hokUpgrade">+</button>
+        <p id="hokCounter">Health on kill: 0</p>
 
-
-    <!--Shop-->
-    <button id="backShop">← Back</button>
-
-    <!--Music Shop-->
-    <audio id="songShop" loop>
-      <source src="./res/music/More Gun.mp3" type="audio/mp3">
-    </audio>
-
-    <!--Upgrade button-->
-    <button id="upgrade">Upgrade 🛠️</button>
-
-     <!--Money-->
-     <div id="moneyCounter">💰 Money: 0</div>
-
-     <!--Spy-->
-    <img id="spyMoney" src="./res/img/red_spy_money.png" alt="Spy with money">
-
-    <!--Back button a Upgrade List-->
-    <img id="upgradeList" src="./res/img/upgrades.png" alt="upgrades">
-    <button id="backUpgrade">Back</button>
-
-    <!--Damage Upgrade-->
-    <button id="damageUpgrade">+</button>
-    <p id="damageCounter">Damage: 25</p>
-
-    <!--Health Upgrade-->
-    <button id="hpUpgrade">+</button>
-    <p id="hpCounter">Health: 125</p>
-
-    <!--Health on kill Upgrade-->
-    <button id="hokUpgrade">+</button>
-    <p id="hokCounter">Health on kill: 0</p>
-
-    <script src="./res/js/spawn.js"></script>
+        <script src="./res/js/spawn.js"></script>
+      </body>
+    </html>
   </body>
 </html>
