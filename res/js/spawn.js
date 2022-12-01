@@ -2,6 +2,13 @@
 const Start = document.getElementById("Start");
 const Sponsors = document.getElementById("Sponsors");
 const backSponsors = document.getElementById("backSponsors");
+const carska = document.getElementById("carska");
+const filip = document.getElementById("filip");
+const adamek = document.getElementById("adamek");
+const ondra = document.getElementById("ondra");
+const dan = document.getElementById("dan");
+const kostecky = document.getElementById("kostecky");
+const hry =  document.getElementById("hry");
 
 const Sazka = document.getElementById("Sazka");
 const MineBlock = document.getElementById("MineBlock");
@@ -185,6 +192,66 @@ back.onmouseleave = () => {
   changeColor(back, "red");
 };
 
+Sazka.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/sazka.png)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Sazka.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Payday.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/payday.png)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Payday.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+MineBlock.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/mineblock.png)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+MineBlock.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Cat.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/catfight.png)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Cat.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Yasuo.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/yasuo.png)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
+Yasuo.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif)";
+  document.body.style.transition = "0.3s"
+  backgroundFixed();
+}
+
 function enemyAttack() {
   enemyDamage = setInterval(() => {
     if (Enemy.style.display == "block") {
@@ -229,6 +296,13 @@ function boss1Attack() {
   }, 2500);
 }
 
+function backgroundFixed(){
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "center center";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundAttachment = "fixed";
+}
+
 Start.onclick = () => {
   songSpawn.play();
   songSpawn.volume = 0.04;
@@ -253,6 +327,7 @@ Sponsors.onclick = () => {
   Start.style.display = "none";
   Sponsors.style.display = "none";
   backSponsors.style.display = "block";
+  hry.style.display = "block";
   Sazka.style.display = "block";
   Yasuo.style.display = "block";
   Cat.style.display = "block";
@@ -260,7 +335,14 @@ Sponsors.onclick = () => {
   MineBlock.style.display = "block";
   Payday.style.display = "block";
 
-  document.body.style.background = "url(./res/img/sponsor.jpg)";
+  carska.style.display = "block";
+  kostecky.style.display = "block";
+  filip.style.display = "block";
+  dan.style.display = "block";
+  adamek.style.display = "block";
+  ondra.style.display = "block";
+
+  document.body.style.background = "url(./res/img/money.gif)";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundPosition = "center center";
   document.body.style.backgroundSize = "cover";
@@ -271,12 +353,20 @@ backSponsors.onclick = () => {
   Start.style.display = "block";
   Sponsors.style.display = "block";
   backSponsors.style.display = "none";
+  hry.style.display = "none";
   Sazka.style.display = "none";
   Yasuo.style.display = "none";
   Cat.style.display = "none";
   Roguelike.style.display = "none";
   MineBlock.style.display = "none";
   Payday.style.display = "none";
+
+  carska.style.display = "none";
+  kostecky.style.display = "none";
+  filip.style.display = "none";
+  dan.style.display = "none";
+  adamek.style.display = "none";
+  ondra.style.display = "none";
 
   document.body.style.background = "url(./res/img/TF2.png)";
   document.body.style.backgroundRepeat = "no-repeat";

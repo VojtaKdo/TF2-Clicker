@@ -50,7 +50,7 @@ button {
 
 #Sponsors {
   border: 3px solid black;
-  max-width: 200px;
+  max-width: 220px;
   width: 100%;
   padding: 10px;
   font-size: 30pt;
@@ -67,8 +67,8 @@ button {
   right: 50%;
   top: 30%;
   position: fixed;
-  margin-left: -100px;
-  margin-right: -100px;
+  margin-left: -110px;
+  margin-right: -110px;
 }
 
 #Sponsors:hover {
@@ -102,67 +102,133 @@ button {
   text-align: center;
 }
 
-#Sazka {
-  background-color: yellow;
+#hry{
+  font-size: 30pt;
+  color: red;
+  font-family: TF2;
   position: fixed;
-  left: 30%;
-  top: 20%;
+  left: 50%;
+  right: 50%;
+  max-width: 600px;
+  width: 100%;
+  margin-left: -300px;
+  margin-right: -300px;
+  margin-top: 50px;
+  text-align: center;
+  display: none;
 }
 
-#Sazka:hover {
-  background-color: goldenrod;
+#carska{
+  font-size: 20pt;
+  text-align: center;
+  color: yellow;
+  position: fixed;
+  left: 28.6%;
+  top: 20%;
+  font-weight: bolder;
+  display: none;
+}
+
+#Sazka {
+  background: url(../img/zaseSazka.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  height: 150px;
+  width: 300px;
+}
+
+#adamek{
+  font-size: 20pt;
+  font-weight: bolder;
+  text-align: center;
+  color: green;
+  position: fixed;
+  left: 30%;
+  top: 45%;
+  display: none;
 }
 
 #MineBlock {
-  background-color: greenyellow;
-  position: fixed;
-  left: 30%;
-  top: 40%;
+  background: url(../img/zaseMineblock.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  height: 150px;
 }
 
-#MineBlock:hover {
-  background-color: darkgreen;
+#kostecky{
+  font-size: 20pt;
+  font-weight: bolder;
+  text-align: center;
+  color: rgb(3, 140, 252);
+  position: fixed;
+  left: 30%;
+  top: 70%;
+  display: none;
 }
 
 #Yasuo {
-  background-color: blue;
-  position: fixed;
-  left: 30%;
-  top: 60%;
+  background: url(../img/zaseYasuo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  height: 150px;
 }
 
-#Yasuo:hover {
-  background-color: aqua;
+#ondra{
+  font-size: 20pt;
+  font-weight: bolder;
+  text-align: center;
+  color: blue;
+  position: fixed;
+  right: 29.2%;
+  top: 20%;
+  display: none;
 }
 
 #Payday {
-  background-color: red;
-  position: fixed;
-  right: 30%;
-  top: 20%;
-
+  background: url(../img/zasePayday.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 43%;
+  height: 150px;
+  width: 280px;
 }
 
-#Payday:hover {
-  background-color: darkred;
+#filip{
+  font-size: 20pt;
+  font-weight: bolder;
+  text-align: center;
+  color: chocolate;
+  position: fixed;
+  right: 30%;
+  top: 45%;
+  display: none;
 }
 
 #Cat {
-  background-color: orange;
-  position: fixed;
-  right: 30%;
-  top: 40%;
+  background: url(../img/zaseCatfight.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  height: 150px;
+  border: 0px solid black;
 }
 
-#Cat:hover {
-  background-color: chocolate;
+#dan{
+  font-size: 20pt;
+  font-weight: bolder;
+  text-align: center;
+  color: brown;
+  position: fixed;
+  right: 30%;
+  top: 70%;
+  display: none;
 }
 
 #Roguelike {
   background-color: brown;
-  position: fixed;
-  right: 30%;
-  top: 60%;
 }
 
 #Roguelike:hover {
