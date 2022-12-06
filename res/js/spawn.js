@@ -440,6 +440,10 @@ shop.onclick = () => {
   songShop.currentTime = 1.2;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
+
+  if(info.style.display == "block"){
+    info.style.display = "none";
+  }
 };
 
 upgrade.onclick = () => {
@@ -517,6 +521,9 @@ backShop.onclick = () => {
   songSpawn.currentTime = 0.8;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
+  if(info.style.display == "none"){
+    info.style.display = "block";
+  }
 };
 
 battle.onclick = () => {
