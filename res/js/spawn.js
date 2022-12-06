@@ -2,13 +2,16 @@
 const Start = document.getElementById("Start");
 const Sponsors = document.getElementById("Sponsors");
 const backSponsors = document.getElementById("backSponsors");
+const startVideo = document.getElementById("startVideo");
 const carska = document.getElementById("carska");
 const filip = document.getElementById("filip");
 const adamek = document.getElementById("adamek");
 const ondra = document.getElementById("ondra");
 const dan = document.getElementById("dan");
 const kostecky = document.getElementById("kostecky");
-const hry =  document.getElementById("hry");
+const hry = document.getElementById("hry");
+const end = document.getElementById("end");
+const again = document.getElementById("again")
 
 const Sazka = document.getElementById("Sazka");
 const MineBlock = document.getElementById("MineBlock");
@@ -24,6 +27,7 @@ const debug = document.getElementById("debug");
 const killCounter = document.getElementById("killCounter");
 const spySpawn = document.getElementById("spySpawn");
 const obalSpawn = document.getElementById("obalSpawn");
+const info = document.getElementById("info");
 const musicSpawn = document.getElementById("musicSpawn");
 const songSpawn = document.getElementById("songSpawn");
 const muteSpawn = document.getElementById("muteSpawn");
@@ -51,6 +55,7 @@ const ShotgunSFX = document.getElementById("ShotgunSFX");
 
 const Boss1 = document.getElementById("Boss1");
 const bossImage = document.getElementById("bossImage");
+const spawnBoss1SFX = document.getElementById("spawnBoss1SFX");
 
 const spy = document.getElementById("spy");
 const SpyShoot = document.getElementById("SpyShoot");
@@ -92,7 +97,6 @@ let hpMaxBoss1 = 1000;
 //damage
 let damageSpy = 20;
 let hok = 0;
-let heavyDeath = 0;
 let enemyDamage;
 let enemyNotDamage;
 let boss1Damage;
@@ -118,14 +122,6 @@ battle.onmouseenter = () => {
 
 battle.onmouseleave = () => {
   changeColor(battle, "red");
-};
-
-Start.onmouseenter = () => {
-  changeColor(Start, "darkred");
-};
-
-Start.onmouseleave = () => {
-  changeColor(Start, "red");
 };
 
 backShop.onmouseenter = () => {
@@ -192,65 +188,75 @@ back.onmouseleave = () => {
   changeColor(back, "red");
 };
 
+Start.onmouseenter = () => {
+  Start.style.maxWidth = "800px";
+  Start.style.marginLeft = "-400px";
+};
+
+Start.onmouseleave = () => {
+  Start.style.maxWidth = "700px";
+  Start.style.marginLeft = "-350px";
+};
+
 Sazka.onmouseenter = () => {
   document.body.style.background = "url(./res/img/sazka.png)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Sazka.onmouseleave = () => {
   document.body.style.background = "url(./res/img/money.gif";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Payday.onmouseenter = () => {
   document.body.style.background = "url(./res/img/payday.png)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Payday.onmouseleave = () => {
   document.body.style.background = "url(./res/img/money.gif";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 MineBlock.onmouseenter = () => {
   document.body.style.background = "url(./res/img/mineblock.png)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 MineBlock.onmouseleave = () => {
   document.body.style.background = "url(./res/img/money.gif)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Cat.onmouseenter = () => {
   document.body.style.background = "url(./res/img/catfight.png)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Cat.onmouseleave = () => {
   document.body.style.background = "url(./res/img/money.gif)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Yasuo.onmouseenter = () => {
   document.body.style.background = "url(./res/img/yasuo.png)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 Yasuo.onmouseleave = () => {
   document.body.style.background = "url(./res/img/money.gif)";
-  document.body.style.transition = "0.3s"
+  document.body.style.transition = "0.3s";
   backgroundFixed();
-}
+};
 
 function enemyAttack() {
   enemyDamage = setInterval(() => {
@@ -272,16 +278,12 @@ function enemyNotAttack() {
     if (hpEnemy <= 0) {
       enemyAttack();
       hpEnemy += 300;
-      money += 50;
-      heavyDeath += 1;
-      console.log(heavyDeath);
-      moneyCounter.innerHTML = `💰 Money: ${money}`;
       shoot.style.pointerEvents = "all";
       cancelShoot.style.display = "none";
       shoot.style.display = "block";
       heavy.style.transform = "rotate(0deg)";
     }
-  }, 3000);
+  }, 2000);
 }
 
 function boss1Attack() {
@@ -290,13 +292,11 @@ function boss1Attack() {
       let damageBoss1 = 50;
       hpSpy -= damageBoss1;
       hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
-      money += 500;
-      moneyCounter.innerHTML = `💰 Money: ${money}`;
     }
   }, 2500);
 }
 
-function backgroundFixed(){
+function backgroundFixed() {
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundPosition = "center center";
   document.body.style.backgroundSize = "cover";
@@ -306,9 +306,11 @@ function backgroundFixed(){
 Start.onclick = () => {
   songSpawn.play();
   songSpawn.volume = 0.04;
+  songSpawn.currentTime = 0.8;
 
   Start.style.display = "none";
   Sponsors.style.display = "none";
+  startVideo.style.display = "none";
   spySpawn.style.display = "block";
   battle.style.display = "block";
   shop.style.display = "block";
@@ -317,15 +319,13 @@ Start.onclick = () => {
   killCounter.style.display = "block";
 
   document.body.style.background = "url(./res/img/spawn.jpg)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
 };
 
 Sponsors.onclick = () => {
   Start.style.display = "none";
   Sponsors.style.display = "none";
+  startVideo.style.display = "none";
   backSponsors.style.display = "block";
   hry.style.display = "block";
   Sazka.style.display = "block";
@@ -343,15 +343,15 @@ Sponsors.onclick = () => {
   ondra.style.display = "block";
 
   document.body.style.background = "url(./res/img/money.gif)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
+
+  startVideo.pause();
 };
 
 backSponsors.onclick = () => {
   Start.style.display = "block";
   Sponsors.style.display = "block";
+  startVideo.style.display = "block";
   backSponsors.style.display = "none";
   hry.style.display = "none";
   Sazka.style.display = "none";
@@ -369,10 +369,9 @@ backSponsors.onclick = () => {
   ondra.style.display = "none";
 
   document.body.style.background = "url(./res/img/TF2.png)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
+
+  startVideo.play();
 };
 
 musicSpawn.onclick = () => {
@@ -380,19 +379,20 @@ musicSpawn.onclick = () => {
   muteSpawn.style.display = "block";
   if (spySpawn.style.display == "block") {
     songSpawn.pause();
-    songSpawn.currentTime = 0;
+    songSpawn.currentTime = 0.8;
   }
   if (Enemy.style.display == "block") {
     songBattle.pause();
-    songBattle.currentTime = 0;
+    songBattle.currentTime = 8;
   }
   if (backShop.style.display == "block") {
     songShop.pause();
     songShop.currentTime = 0;
+    songShop.currentTime = 1.2;
   }
   if (upgradeList.style.display == "block") {
     songShop.pause();
-    songShop.currentTime = 0;
+    songShop.currentTime = 1.2;
   }
 };
 
@@ -431,16 +431,13 @@ shop.onclick = () => {
   moneyCounter.style.display = "block";
 
   document.body.style.background = "url(./res/img/shop.png)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
 
   backShop.style.display = "block";
   songSpawn.pause();
   songShop.play();
   songShop.volume = 0.04;
-  songShop.currentTime = 0;
+  songShop.currentTime = 1.2;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
 };
@@ -512,15 +509,12 @@ backShop.onclick = () => {
   spyMoney.style.display = "none";
   moneyCounter.style.display = "none";
   document.body.style.background = "url(./res/img/spawn.jpg)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
 
   backShop.style.display = "none";
   songSpawn.play();
   songShop.pause();
-  songSpawn.currentTime = 0;
+  songSpawn.currentTime = 0.8;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
 };
@@ -546,10 +540,7 @@ battle.onclick = () => {
 
   //battlefield
   document.body.style.background = "url(./res/img/2fort.png)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
 
   //muzika
   songSpawn.pause();
@@ -557,7 +548,7 @@ battle.onclick = () => {
   songBattle.volume = 0.04;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
-  songBattle.currentTime = 0;
+  songBattle.currentTime = 8;
 
   spy.style.display = "block";
   characters.style.display = "flex";
@@ -569,6 +560,18 @@ battle.onclick = () => {
     enemyAttack();
     heavy.style.transform = "rotate(0deg)";
     Enemy.style.display = "block";
+    spy.style.display = "block";
+    characters.style.display = "flex";
+    shoot.style.display = "block";
+    info.style.display = "none";
+  }
+
+  if(kill > 10){
+    Enemy.style.display = "block";
+    heavy.style.display = "block";
+    hpCounterEnemy.style.display = "block";
+    characters.style.display = "flex";
+    heavy.style.transform = "rotate(0deg)";
   }
 
   //útočení Boss1
@@ -578,7 +581,13 @@ battle.onclick = () => {
     Enemy.style.display = "none";
     heavy.style.display = "none";
     hpCounterEnemy.style.display = "none";
+    info.style.display = "none";
     Boss1.style.display = "block";
+    spy.style.display = "block";
+    SpyBattle.style.display = "block";
+    hpCounterSpy.style.display = "block";
+    characters.style.display = "flex";
+    shoot.style.display = "block";
     hpCounterBoss1.style.display = "block";
     hpCounterBoss1.innerHTML = `${hpBoss1}/${hpBoss1} HP`;
   }
@@ -595,10 +604,7 @@ back.onclick = () => {
   killCounter.style.display = "block";
   battle.style.display = "block";
   document.body.style.background = "url(./res/img/spawn.jpg)";
-  document.body.style.backgroundRepeat = "no-repeat";
-  document.body.style.backgroundPosition = "center center";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundAttachment = "fixed";
+  backgroundFixed();
 
   spy.style.display = "none";
   characters.style.display = "none";
@@ -617,7 +623,7 @@ back.onclick = () => {
   DeathSFX.currentTime = 0;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
-  songSpawn.currentTime = 0;
+  songSpawn.currentTime = 0.8;
 
   if (kill != 10) {
     Enemy.style.display = "none";
@@ -625,8 +631,10 @@ back.onclick = () => {
     hpEnemy -= hpEnemy;
     hpEnemy += 300;
     hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
-  } else if (kill == 10) {
+  } 
+  else if (kill == 10) {
     Boss1.style.display = "none";
+    info.style.display = "none";
 
     hpBoss1 -= hpBoss1;
     hpBoss1 += hpMaxBoss1;
@@ -636,14 +644,19 @@ back.onclick = () => {
 
 // útočení Spy
 shoot.onclick = () => {
-  hpBoss1 -= damageSpy;
-  hpEnemy -= damageSpy; 
-  hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
-  hpCounterBoss1.innerHTML = `${hpBoss1}/${hpMaxBoss1} HP`;
-  enemyNotAttack();
+  if(Enemy.style.display == "block"){
+    hpEnemy -= damageSpy;
+    hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
+  }
+
+  if(Boss1.style.display == "block"){
+    hpBoss1 -= damageSpy;
+    hpCounterBoss1.innerHTML = `${hpBoss1}/${hpMaxBoss1} HP`;
+  }
 
   if (hpEnemy <= 0 && Enemy.style.display == "block") {
     clearInterval(enemyDamage);
+    enemyNotAttack();
     heavy.style.transform = "rotate(90deg)";
     DeathSFX.play();
     DeathSFX.volume = 0.2;
@@ -653,8 +666,9 @@ shoot.onclick = () => {
     cancelShoot.style.pointerEvents = "none";
     kill++;
     killCounter.innerHTML = `Kill counter: ${kill}`;
-  } 
-  else if (hpBoss1 <= 0 && Boss1.style.display == "block") {
+    money += 50;
+    moneyCounter.innerHTML = `💰 Money: ${money}`;
+  } else if (hpBoss1 <= 0 && Boss1.style.display == "block") {
     clearInterval(boss1Damage);
     bossImage.style.transform = "rotate(90deg)";
     cancelShoot.style.display = "block";
@@ -669,11 +683,7 @@ shoot.onclick = () => {
     debug.style.display = "block";
     killCounter.style.display = "block";
     battle.style.display = "block";
-    document.body.style.background = "url(./res/img/spawn.jpg)";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundPosition = "center center";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundAttachment = "fixed";
+    backgroundFixed();
 
     spy.style.display = "none";
     Boss1.style.display = "none";
@@ -681,10 +691,61 @@ shoot.onclick = () => {
     shoot.style.display = "none";
     cancelShoot.style.display = "none";
     back.style.display = "none";
+    songBattle.pause();
+    songBattle.currentTime = 8;
+    songSpawn.play();
+    songSpawn.currentTime = 0.8;
+    document.body.style.background = "url(./res/img/spawn.jpg)";
 
     hpSpy -= hpSpy;
     hpSpy += hpMaxSpy;
     hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+    money += 500;
+    moneyCounter.innerHTML = `💰 Money: ${money}`;
+  }
+
+  if (kill == 10 && Enemy.style.display == "block") {
+    clearInterval(enemyDamage);
+    clearInterval(enemyNotDamage);
+    clearInterval(boss1Damage);
+    spawnBoss1SFX.play();
+    spawnBoss1SFX.volume = 0.04;
+    Enemy.style.display = "none";
+    hpCounterEnemy.style.display = "none";
+    shoot.style.display = "none";
+    cancelShoot.style.display = "none";
+
+    setTimeout(() => {
+      clearInterval(enemyNotDamage);
+      clearInterval(enemyDamage);
+      SpyBattle.style.display = "none";
+      spy.style.display = "none";
+      characters.style.display = "none";
+      hpCounterSpy.style.display = "none";
+      shoot.style.display = "none";
+      cancelShoot.style.display = "none";
+      back.style.display = "none";
+
+      spySpawn.style.display = "block";
+      battle.style.display = "block";
+      shop.style.display = "block";
+      musicSpawn.style.display = "block";
+      debug.style.display = "block";
+      killCounter.style.display = "block";
+      info.style.display = "block";
+      info.innerHTML = "Next Enemy: boss Horseless Headless Horsemann";
+
+      document.body.style.background = "url(./res/img/spawn.jpg)";
+      backgroundFixed();
+
+      songSpawn.play();
+      songBattle.pause();
+      DeathSFX.pause();
+      DeathSFX.currentTime = 0;
+      musicSpawn.style.display = "block";
+      muteSpawn.style.display = "none";
+      songSpawn.currentTime = 0.8;
+    }, 1000);
   }
 
   if (hpEnemy <= 0 || hokCounter > 0) {
@@ -709,19 +770,18 @@ shoot.onclick = () => {
 };
 
 window.onload = () => {
+  startVideo.currentTime = 8.3;
   setInterval(() => {
     if (hpSpy <= 0) {
       clearInterval(enemyDamage);
+      clearInterval(boss1Damage);
       spySpawn.style.display = "block";
       shop.style.display = "block";
       battle.style.display = "block";
       debug.style.display = "block";
       killCounter.style.display = "block";
       document.body.style.background = "url(./res/img/spawn.jpg)";
-      document.body.style.backgroundRepeat = "no-repeat";
-      document.body.style.backgroundPosition = "center center";
-      document.body.style.backgroundSize = "cover";
-      document.body.style.backgroundAttachment = "fixed";
+      backgroundFixed();
 
       Enemy.style.display = "none";
       spy.style.display = "none";
@@ -733,12 +793,14 @@ window.onload = () => {
       musicSpawn.style.display = "block";
       songBattle.pause();
       songSpawn.play();
-      songSpawn.currentTime = 0;
+      songSpawn.currentTime = 0.8;
 
       hpSpy += hpMaxSpy;
       hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
       hpEnemy -= hpEnemy;
       hpEnemy += 300;
+      hpBoss1 -= hpBoss1;
+      hpBoss1 += 1000;
       hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
       killCounter.innerHTML = `Kill counter: ${kill}`;
     } else if (kill < 0) {

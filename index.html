@@ -20,9 +20,15 @@
       </head>
       <body>
         <!--Start-->
-        <button id="Start">Play</button>
+        <video autoplay muted loop id="startVideo">
+          <source src="/res/video/Start.mp4" type="video/mp4">
+        </video>
+
+        <img id="Start" src="./res/img/TF2.png" alt="TF2 logo">
+
         <button id="Sponsors">Sponsors</button>
         <button id="backSponsors">Back →</button>
+
         <p id="hry">Try other games <br> made by my friends</p>
 
         <div id="carska">Michal Carska
@@ -53,12 +59,9 @@
         <img id="spySpawn" src="./res/img/spy.png" alt="Spy" />
         <button id="shop">Shop →</button>
         <button id="battle">← Battlefield</button>
-        <button id="debug">
-          Debug Health <br /><span style="font-size: 10pt"
-            >(Click after dying)</span
-          >
-        </button>
+        <button id="debug">Debug Health <br /><span style="font-size: 10pt">(Click after dying)</span></button>
         <p id="killCounter">Kill counter: 0</p>
+        <p id="info">Next Enemy:</p>
 
         <!--Characters - Battlefield-->
         <button id="back">Back →</button>
@@ -86,6 +89,9 @@
           <div id="Boss1">
             <p id="hpCounterBoss1">1000/1000 HP</p>
             <img id="bossImage" src="./res/img/HHH.png" alt="Boss1" />
+            <audio id="spawnBoss1SFX">
+              <source src="./res/music/spawnHHH.mp3" type="audio/mp3">
+            </audio>
           </div>
 
           <!--Shoot animation-->

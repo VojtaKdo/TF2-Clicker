@@ -11,12 +11,8 @@
   margin: 0;
 }
 
-body {
-  background-image: url(../img/TF2.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
+body{
+  background: url(../video/Start.mp4);
 }
 
 button {
@@ -32,20 +28,47 @@ button {
 
 /*Start*/
 #Start {
-  border: 3px solid black;
-  max-width: 200px;
+  max-width: 700px;
   width: 100%;
   padding: 10px;
   font-size: 30pt;
-  background-color: red;
   cursor: pointer;
   text-align: center;
   left: 50%;
   right: 50%;
   top: 20%;
   position: fixed;
-  margin-left: -100px;
-  margin-right: -100px;
+  margin-left: -350px;
+  margin-right: -350px;
+  transition: 0.5s;
+}
+
+#startVideo{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#end{
+  font-family: TF2;
+  font-size: 30pt;
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  display: none;
+}
+
+#again{
+  font-family: TF2;
+  border: 3px solid black;
+  max-width: 150px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20pt;
+  background-color: red;
+  display: none;
 }
 
 #Sponsors {
@@ -65,7 +88,7 @@ button {
   text-align: center;
   left: 50%;
   right: 50%;
-  top: 30%;
+  top: 55%;
   position: fixed;
   margin-left: -110px;
   margin-right: -110px;
@@ -272,6 +295,15 @@ button {
   display: none;
   font-family: TF2;
   color: white;
+}
+
+#info{
+  font-family: TF2;
+  font-size: 25pt;
+  color: red;
+  top: 120px;
+  position: fixed;
+  display: none;
 }
 
 #debug {
