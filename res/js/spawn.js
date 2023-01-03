@@ -284,6 +284,18 @@ Yasuo.onmouseleave = () => {
   backgroundFixed();
 };
 
+Roguelike.onmouseenter = () => {
+  document.body.style.background = "url(./res/img/carpal.png)";
+  document.body.style.transition = "0.3s";
+  backgroundFixed();
+}
+
+Roguelike.onmouseleave = () => {
+  document.body.style.background = "url(./res/img/money.gif)";
+  document.body.style.transition = "0.3s";
+  backgroundFixed();
+}
+
 function enemyAttack() {
   enemyDamage = setInterval(() => {
     if (Enemy.style.display == "block") {

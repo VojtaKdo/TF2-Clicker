@@ -251,11 +251,12 @@ button {
 }
 
 #Roguelike {
-  background-color: brown;
-}
-
-#Roguelike:hover {
-  background-color: crimson;
+  background: url(../img/zaseDan.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  height: 150px;
+  border: 0px solid black;
 }
 
 /*Spawn*/
