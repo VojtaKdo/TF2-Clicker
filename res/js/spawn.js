@@ -23,7 +23,6 @@ const Roguelike = document.getElementById("Roguelike");
 //spawn
 const shop = document.getElementById("shop");
 const battle = document.getElementById("battle");
-const debug = document.getElementById("debug");
 const killCounter = document.getElementById("killCounter");
 const spySpawn = document.getElementById("spySpawn");
 const obalSpawn = document.getElementById("obalSpawn");
@@ -84,6 +83,9 @@ const hpUpgrade = document.getElementById("hpUpgrade");
 const hpCounter = document.getElementById("hpCounter");
 const hokUpgrade = document.getElementById("hokUpgrade");
 const hokCounter = document.getElementById("hokCounter");
+const damageDowngrade = document.getElementById("damageDowngrade");
+const hpDowngrade = document.getElementById("hpDowngrade");
+const hokDowngrade = document.getElementById("hokDowngrade");
 
 //životy
 let hpSpy = 125;
@@ -171,6 +173,30 @@ hokUpgrade.onmouseenter = () => {
 hokUpgrade.onmouseleave = () => {
   changeColor(hokUpgrade, "white");
 };
+
+damageDowngrade.onmouseenter = () => {
+  changeColor(damageDowngrade, "grey");
+}
+
+damageDowngrade.onmouseleave = () => {
+  changeColor(damageDowngrade, "white");
+}
+
+hpDowngrade.onmouseenter = () => {
+  changeColor(hpDowngrade, "grey");
+}
+
+hpDowngrade.onmouseleave = () => {
+  changeColor(hpDowngrade, "white");
+}
+
+hokDowngrade.onmouseenter = () => {
+  changeColor(hokDowngrade, "grey");
+}
+
+hokDowngrade.onmouseleave = () => {
+  changeColor(hokDowngrade, "white");
+}
 
 backSponsors.onmouseenter = () => {
   changeColor(backSponsors, "darkred");
@@ -274,16 +300,18 @@ function enemyAttack() {
 }
 
 function enemyNotAttack() {
+  if (hpEnemy <= 0) {
   enemyNotDamage = setTimeout(() => {
-    if (hpEnemy <= 0) {
       enemyAttack();
-      hpEnemy += 300;
+      hpEnemy -= hpEnemy;
+      hpEnemy += hpMaxEnemy;
+      hpCounterEnemy.innerHTML =  `${hpEnemy}/${hpMaxEnemy} HP`
       shoot.style.pointerEvents = "all";
       cancelShoot.style.display = "none";
       shoot.style.display = "block";
-      heavy.style.transform = "rotate(0deg)";
-    }
-  }, 2000);
+      heavy.style.transform = "rotate(0deg)";}
+   , 2000)
+  }
 }
 
 function boss1Attack() {
@@ -315,7 +343,6 @@ Start.onclick = () => {
   battle.style.display = "block";
   shop.style.display = "block";
   musicSpawn.style.display = "block";
-  debug.style.display = "block";
   killCounter.style.display = "block";
 
   document.body.style.background = "url(./res/img/spawn.jpg)";
@@ -396,12 +423,6 @@ musicSpawn.onclick = () => {
   }
 };
 
-debug.onclick = () => {
-  hpSpy -= hpSpy;
-  hpSpy += hpMaxSpy;
-  hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
-};
-
 muteSpawn.onclick = () => {
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
@@ -423,7 +444,6 @@ muteSpawn.onclick = () => {
 shop.onclick = () => {
   spySpawn.style.display = "none";
   shop.style.display = "none";
-  debug.style.display = "none";
   killCounter.style.display = "none";
   battle.style.display = "none";
   upgrade.style.display = "block";
@@ -454,6 +474,9 @@ upgrade.onclick = () => {
   backUpgrade.style.display = "block";
   damageUpgrade.style.display = "block";
   damageCounter.style.display = "block";
+  damageDowngrade.style.display = "block";
+  hpDowngrade.style.display = "block";
+  hokDowngrade.style.display = "block";
   hpUpgrade.style.display = "block";
   hpCounter.style.display = "block";
   hokUpgrade.style.display = "block";
@@ -489,11 +512,43 @@ hokUpgrade.onclick = () => {
   }
 };
 
+damageDowngrade.onclick = () => {
+  if(money >= 0 && damageSpy > 20){
+    money += 200;
+    damageSpy -= 10;
+    damageCounter.innerHTML = `Damage: ${damageSpy}`;
+    moneyCounter.innerHTML = `💰 Money: ${money}`;
+  }
+}
+
+hpDowngrade.onclick = () => {
+  if(money >= 0 && hpSpy > 125){
+    money += 200;
+    hpSpy -= 10;
+    hpMaxSpy -= 10;
+    hpCounter.innerHTML = `health: ${hpSpy}`;
+    hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+    moneyCounter.innerHTML = `💰 Money: ${money}`;
+  }
+}
+
+hokDowngrade.onclick = () => {
+  if(money >= 0 && hok > 0){
+    money += 100;
+    hok -= 5;
+    hokCounter.innerHTML = `Health on kill: ${hok}`;
+    moneyCounter.innerHTML = `💰 Money: ${money}`;
+  }
+}
+
 backUpgrade.onclick = () => {
   upgradeList.style.display = "none";
   backUpgrade.style.display = "none";
   damageUpgrade.style.display = "none";
   damageCounter.style.display = "none";
+  damageDowngrade.style.display = "none";
+  hpDowngrade.style.display = "none";
+  hokDowngrade.style.display = "none";
   hpUpgrade.style.display = "none";
   hpCounter.style.display = "none";
   hokUpgrade.style.display = "none";
@@ -507,7 +562,6 @@ backShop.onclick = () => {
   spySpawn.style.display = "block";
   shop.style.display = "block";
   battle.style.display = "block";
-  debug.style.display = "block";
   killCounter.style.display = "block";
   upgrade.style.display = "none";
   spyMoney.style.display = "none";
@@ -521,9 +575,6 @@ backShop.onclick = () => {
   songSpawn.currentTime = 0.8;
   musicSpawn.style.display = "block";
   muteSpawn.style.display = "none";
-  if(info.style.display == "none"){
-    info.style.display = "block";
-  }
 };
 
 battle.onclick = () => {
@@ -541,7 +592,6 @@ battle.onclick = () => {
   //Spawn
   spySpawn.style.display = "none";
   shop.style.display = "none";
-  debug.style.display = "none";
   killCounter.style.display = "none";
   battle.style.display = "none";
 
@@ -607,7 +657,6 @@ back.onclick = () => {
   spySpawn.style.display = "block";
   SpyShoot.style.display = "none";
   shop.style.display = "block";
-  debug.style.display = "block";
   killCounter.style.display = "block";
   battle.style.display = "block";
   document.body.style.background = "url(./res/img/spawn.jpg)";
@@ -636,8 +685,8 @@ back.onclick = () => {
     Enemy.style.display = "none";
 
     hpEnemy -= hpEnemy;
-    hpEnemy += 300;
-    hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
+    hpEnemy += hpMaxEnemy;
+    hpCounterEnemy.innerHTML = `${hpEnemy}/${hpMaxEnemy} HP`;
   } 
   else if (kill == 10) {
     Boss1.style.display = "none";
@@ -653,7 +702,7 @@ back.onclick = () => {
 shoot.onclick = () => {
   if(Enemy.style.display == "block"){
     hpEnemy -= damageSpy;
-    hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
+    hpCounterEnemy.innerHTML = `${hpEnemy}/${hpMaxEnemy} HP`;
   }
 
   if(Boss1.style.display == "block"){
@@ -687,7 +736,6 @@ shoot.onclick = () => {
     spySpawn.style.display = "block";
     SpyShoot.style.display = "none";
     shop.style.display = "block";
-    debug.style.display = "block";
     killCounter.style.display = "block";
     battle.style.display = "block";
     backgroundFixed();
@@ -707,6 +755,9 @@ shoot.onclick = () => {
     hpSpy -= hpSpy;
     hpSpy += hpMaxSpy;
     hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
+    hpEnemy -= hpEnemy;
+    hpEnemy += hpMaxEnemy;
+    hpCounterEnemy.innerHTML = `${hpEnemy}/${hpMaxEnemy} HP`;
     money += 500;
     moneyCounter.innerHTML = `💰 Money: ${money}`;
   }
@@ -721,6 +772,7 @@ shoot.onclick = () => {
     hpCounterEnemy.style.display = "none";
     shoot.style.display = "none";
     cancelShoot.style.display = "none";
+    back.style.display = "none";
 
     setTimeout(() => {
       clearInterval(enemyNotDamage);
@@ -737,7 +789,6 @@ shoot.onclick = () => {
       battle.style.display = "block";
       shop.style.display = "block";
       musicSpawn.style.display = "block";
-      debug.style.display = "block";
       killCounter.style.display = "block";
       info.style.display = "block";
       info.innerHTML = "Next Enemy: boss Horseless Headless Horsemann";
@@ -745,6 +796,9 @@ shoot.onclick = () => {
       document.body.style.background = "url(./res/img/spawn.jpg)";
       backgroundFixed();
 
+      hpSpy -= hpSpy;
+      hpSpy += hpMaxSpy;
+      hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
       songSpawn.play();
       songBattle.pause();
       DeathSFX.pause();
@@ -755,7 +809,7 @@ shoot.onclick = () => {
     }, 1000);
   }
 
-  if (hpEnemy <= 0 || hokCounter > 0) {
+  if (hpEnemy <= 0 && Enemy.style.display == "block" || hokCounter > 0) {
     hpSpy += hok;
     hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
   }
@@ -785,7 +839,6 @@ window.onload = () => {
       spySpawn.style.display = "block";
       shop.style.display = "block";
       battle.style.display = "block";
-      debug.style.display = "block";
       killCounter.style.display = "block";
       document.body.style.background = "url(./res/img/spawn.jpg)";
       backgroundFixed();
@@ -802,13 +855,14 @@ window.onload = () => {
       songSpawn.play();
       songSpawn.currentTime = 0.8;
 
+      hpSpy -= hpSpy;
       hpSpy += hpMaxSpy;
       hpCounterSpy.innerHTML = `${hpSpy}/${hpMaxSpy} HP`;
       hpEnemy -= hpEnemy;
-      hpEnemy += 300;
+      hpEnemy += hpMaxEnemy;
       hpBoss1 -= hpBoss1;
       hpBoss1 += 1000;
-      hpCounterEnemy.innerHTML = `${hpEnemy}/300 HP`;
+      hpCounterEnemy.innerHTML = `${hpEnemy}/${hpMaxEnemy} HP`;
       killCounter.innerHTML = `Kill counter: ${kill}`;
     } else if (kill < 0) {
       kill++;

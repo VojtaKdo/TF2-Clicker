@@ -306,34 +306,6 @@ button {
   display: none;
 }
 
-#debug {
-  max-width: 250px;
-  background-color: rgb(61, 75, 55);
-  background: linear-gradient(
-    90deg,
-    rgba(61, 75, 55, 1) 0%,
-    rgba(0, 255, 38, 1) 50%,
-    rgba(61, 75, 55, 1) 100%
-  );
-  display: none;
-  position: fixed;
-  left: 50%;
-  right: 50%;
-  margin-left: -125px;
-  margin-right: -125px;
-  cursor: pointer;
-}
-
-#debug:hover {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 255, 38, 1) 50%,
-    rgba(255, 255, 255, 1) 100%
-  );
-}
-
 #musicSpawn,
 #muteSpawn {
   max-width: 50px;
@@ -473,17 +445,53 @@ a {
   max-width: 200px;
 }
 
-#damageUpgrade {
+#damageUpgrade, #hpUpgrade, #hokUpgrade, #damageDowngrade, #hpDowngrade, #hokDowngrade{
   display: none;
   background-color: white;
   border: 1px solid black;
   border-radius: 50px;
   padding: 0;
   width: 35px;
-  position: absolute;
+  cursor: pointer;
+}
+
+#damageUpgrade {
+  position: fixed;
   left: 43.5%;
   top: 20%;
-  cursor: pointer;
+}
+
+#hpUpgrade {
+  width: 35px;
+  position: fixed;
+  left: 63%;
+  top: 20%;
+}
+
+#hokUpgrade {
+  width: 35px;
+  position: absolute;
+  left: 43.5%;
+  top: 31%;
+}
+
+#damageDowngrade{
+  position: fixed;
+  left: 46%;
+  top: 20%;
+}
+
+
+#hpDowngrade{
+  position: fixed;
+  left: 65.5%;
+  top: 20%;
+}
+
+#hokDowngrade{
+  position: fixed;
+  left: 46%;
+  top: 31%;
 }
 
 #damageCounter {
@@ -491,22 +499,9 @@ a {
   font-size: 20pt;
   color: white;
   font-family: TF2;
-  position: absolute;
+  position: fixed;
   top: 40%;
   left: 40%;
-}
-
-#hpUpgrade {
-  display: none;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50px;
-  padding: 0;
-  width: 35px;
-  position: absolute;
-  left: 63%;
-  top: 20%;
-  cursor: pointer;
 }
 
 #hpCounter {
@@ -517,19 +512,6 @@ a {
   position: absolute;
   top: 45%;
   left: 40%;
-}
-
-#hokUpgrade {
-  display: none;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50px;
-  padding: 0;
-  width: 35px;
-  position: absolute;
-  left: 43.5%;
-  top: 31%;
-  cursor: pointer;
 }
 
 #hokCounter {

@@ -1,5 +1,8 @@
 # TF2-Clicker
 [Spustit](https://vojtakdo.github.io/TF2-Clicker/)
+<h2>1.4.1 Update</h2>
+<p>- Bug fixes</p>
+
 <h2>1.4 Update</h2>
 <p>- Added Boss</p>
 
